@@ -1,0 +1,27 @@
+module Loops
+
+  use import int.Int
+  use import ref.Ref
+
+  let loop1 (n:int)
+      requires { n >= 0 }
+      ensures { result = 0 } 
+    =
+    let i = ref n in
+    while !i > 0 do
+      variant { !i }
+      invariant { !i >= 0 } 
+      i := !i - 1
+    done;
+    !i
+  
+  let loop2 (n:int) =
+    let i = ref n in
+    while !i < 100 do
+      variant { 100 - !i }
+      i := !i + 1
+    done;
+    !i
+    
+    
+end

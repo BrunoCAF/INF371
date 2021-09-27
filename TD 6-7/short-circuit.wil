@@ -1,0 +1,17 @@
+boolean t() {
+  print 1;
+  return true;
+}
+
+boolean f() {
+  print 0;
+  return false;
+}
+
+int b2w(boolean b) {
+  if (b) return 1; else return 0;
+}
+
+void main() {
+  print b2w(t() || t());
+}

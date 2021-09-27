@@ -1,0 +1,23 @@
+record ipair {
+  int x;
+  int y;
+}
+
+record itriple extends ipair {
+  int z;
+}
+
+int add2(ipair p) {
+  return p.x + p.y;
+}
+
+int add3(itriple p) {
+  return p.x + p.y + p.z;
+}
+
+void main() {
+  itriple p = new itriple();
+  p.x = 10; p.y = 5; p.z = 7;
+  print add2(p);
+  print add3(p);
+}

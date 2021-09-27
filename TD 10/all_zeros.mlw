@@ -1,0 +1,21 @@
+module All_zeros
+
+  use import int.Int
+  use import array.Array
+
+  exception Found
+
+  let all_zeros (a: array int)
+    ensures { result <-> forall i: int. 0 <= i < length a -> a[i] = 0 }
+    =
+    try
+      for i = 0 to length a - 1 do
+        invariant { forall j: int. 0 <= j < i -> a[j] = 0}
+        if a[i] <> 0 then raise Found
+      done;
+      true
+    with Found ->
+      false
+    end
+
+end
